@@ -1,10 +1,11 @@
-import type { NextConfig } from "next";
+// vite.config.ts
+import { defineConfig } from 'vite'
+import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import viteReact from '@vitejs/plugin-react'
 
-const nextConfig: NextConfig = {
-  /* config options here */
-  images: {
-    remotePatterns: [new URL("https://img.freepik.com/**")],
-  },
-};
-
-export default nextConfig;
+export default defineConfig({
+  plugins: [
+    tanstackStart(), // MUST come before react()
+    viteReact(),
+  ],
+})
